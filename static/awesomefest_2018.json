@@ -1,17 +1,17 @@
 {
-  event_name: "awesomefest 11",
-  timezone: "America/Los_Angeles",
-  dates: [
+  "event_name": "awesomefest 11",
+  "timezone": "America/Los_Angeles",
+  "dates": [
     {
-      blocks: [
+      "blocks": [
         [ "2018-02-16T19:25:00.000-08:00", "2018-02-17T02:00:00.000-08:00" ]
       ],
-      venues: [
+      "venues": [
         {
-          block_id: 0,
-          name: "space",
-          loc: "1234 Aloha Drive",
-          acts: [
+          "block_id": 0,
+          "name": "space",
+          "loc": "1234 Aloha Drive",
+          "acts": [
             ["marriage material", "7:25 PM | 7:50 PM"],
             ["clown sounds", "8:10 PM | 8:35 PM"],
             ["the trashies", "8:55 PM | 9:20 PM"],
@@ -19,14 +19,14 @@
             ["typesetter", "10:25 PM | 10:50 PM"],
             ["the lucky eejits", "11:10 PM | 11:25 PM"],
             ["civil war rust", "11:55 PM | 12:25 AM"],
-            ["western settings", "12:40 PM | 2:00 AM"],
+            ["western settings", "12:40 PM | 2:00 AM"]
           ]
         },
         {
-          block_id: 0,
-          name: "soda bar",
-          loc: "4567 Shaka Way",
-          acts: [
+          "block_id": 0,
+          "name": "soda bar",
+          "loc": "4567 Shaka Way",
+          "acts": [
             ["night dangers", "7:45 PM | 8:10 PM"],
             ["allweather", "8:30 PM | 8:55 PM"],
             ["sevende", "9:15 PM | 9:40 PM"],
@@ -34,63 +34,63 @@
             ["kira jari", "10:45 PM | 11:10 PM"],
             ["dfmk", "11:30 PM | 11:55 PM"],
             ["horror squad", "12:15 AM | 12:45 AM"],
-            ["dead to me", "1:00 AM | 2:00 AM"],
+            ["dead to me", "1:00 AM | 2:00 AM"]
           ]
         }
       ]
     },
     {
-      blocks: [
+      "blocks": [
         [ "2018-02-17T14:15:00.000-08:00", "2018-02-17T19:30:00.000-08:00" ],
         [ "2018-02-17T20:10:00.000-08:00", "2018-02-18T02:00:00.000-08:00" ]
       ],
-      venues: [
+      "venues": [
         {
-          block_id: 0,
-          name: "the office",
-          loc: "1234 Aloha Drive",
-          acts: [
+          "block_id": 0,
+          "name": "the office",
+          "loc": "1234 Aloha Drive",
+          "acts": [
             ["the bigger empty", "2:15 PM | 2:40 PM"],
             ["reunions", "3:00 PM | 3:25 PM"],
             ["black paw", "3:45 PM | 4:10 PM"],
             ["shallow cuts", "4:30 PM | 4:55 PM"],
             ["needles//pins", "5:15 PM | 5:40 PM"],
             ["decent criminal", "6:00 PM | 6:30 PM"],
-            ["bad cop/bad cop", "6:50 PM | 7:30 PM"],
+            ["bad cop/bad cop", "6:50 PM | 7:30 PM"]
           ]
         },
         {
-          block_id: 0,
-          name: "bar pink",
-          loc: "4567 Shaka Way",
-          acts: [
+          "block_id": 0,
+          "name": "bar pink",
+          "loc": "4567 Shaka Way",
+          "acts": [
             ["kid coast", "2:35 PM | 3:00 PM"],
             ["justus proffit", "3:20 PM | 3:45 PM"],
             ["the pretty flowers", "4:05 PM | 4:30 PM"],
             ["cringeworthy", "4:50 PM | 5:15 PM"],
             ["evil livin'", "5:35 PM | 6:05 PM"],
-            ["fleshies", "6:25 PM | 7:00 PM"],
+            ["fleshies", "6:25 PM | 7:00 PM"]
           ]
         },
         {
-          block_id: 1,
-          name: "space",
-          loc: "1234 Aloha Drive",
-          acts: [
+          "block_id": 1,
+          "name": "space",
+          "loc": "1234 Aloha Drive",
+          "acts": [
             ["cruz radical", "8:10 PM | 8:35 PM"],
             ["signalman", "8:55 PM | 9:20 PM"],
             ["canadian rifle", "9:40 PM | 10:05 PM"],
             ["sciatic nerve", "10:25 PM | 10:50 PM"],
             ["form rank", "11:10 PM | 11:35 PM"],
             ["the shell corporation", "11:55 PM | 12:25 AM"],
-            ["nothington", "12:40 AM | 2:00 AM"],
+            ["nothington", "12:40 AM | 2:00 AM"]
           ]
         },
         {
-          block_id: 1,
-          name: "soda bar",
-          loc: "4567 Shaka Way",
-          acts: [
+          "block_id": 1,
+          "name": "soda bar",
+          "loc": "4567 Shaka Way",
+          "acts": [
             ["the mission creeps", "8:30 PM | 8:55 PM"],
             ["rad", "9:15 PM | 9:40 PM"],
             ["squishers", "10:00 PM | 10:25 PM"],
@@ -103,16 +103,16 @@
       ]
     },
     {
-      blocks: [
+      "blocks": [
         [ "2018-02-18T14:15:00.000-08:00", "2018-02-18T19:30:00.000-08:00" ],
         [ "2018-02-18T20:10:00.000-08:00", "2018-02-19T02:00:00.000-08:00" ]
       ],
-      venues: [
+      "venues": [
         {
-          block_id: 0,
-          name: "the office",
-          loc: "1234 Aloha Drive",
-          acts: [
+          "block_id": 0,
+          "name": "the office",
+          "loc": "1234 Aloha Drive",
+          "acts": [
             ["the dodges", "2:15 PM | 2:40 PM"],
             ["the drowns", "3:00 PM | 3:25 PM"],
             ["maniac", "3:45 PM | 4:10 PM"],
@@ -123,10 +123,10 @@
           ]
         },
         {
-          block_id: 0,
-          name: "bar pink",
-          loc: "4567 Shaka Way",
-          acts: [
+          "block_id": 0,
+          "name": "bar pink",
+          "loc": "4567 Shaka Way",
+          "acts": [
             ["robot (re)pair", "2:35 PM | 3:00 PM"],
             ["fuck you idiot", "3:20 PM | 3:45 PM"],
             ["the plurals", "4:05 PM | 4:30 PM"],
@@ -136,10 +136,10 @@
           ]
         },
         {
-          block_id: 1,
-          name: "space",
-          loc: "1234 Aloha Drive",
-          acts: [
+          "block_id": 1,
+          "name": "space",
+          "loc": "1234 Aloha Drive",
+          "acts": [
             ["ash williams", "8:10 PM | 8:35 PM"],
             ["the chill dawgs", "8:55 PM | 9:20 PM"],
             ["hammerbombs", "9:40 PM | 10:05 PM"],
@@ -150,16 +150,16 @@
           ]
         },
         {
-          block_id: 1,
-          name: "soda bar",
-          loc: "4567 Shaka Way",
-          acts: [
+          "block_id": 1,
+          "name": "soda bar",
+          "loc": "4567 Shaka Way",
+          "acts": [
             ["the stupid daikini", "8:30 PM | 8: 55 PM"],
             ["never old bones", "9:15 PM | 9:40 PM"],
             ["squarecrow", "10:00 PM | 10:25 PM"],
             ["racquet club", "10:45 PM | 11:10 PM"],
             ["adult magic", "11:30 PM | 11:55 PM"],
-            ["odd robot", "12:15 AM | 12:45 AM"]
+            ["odd robot", "12:15 AM | 12:45 AM"],
             ["samiam", "1:00 AM | 2:00 AM"]
           ]
         }

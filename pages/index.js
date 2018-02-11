@@ -1,9 +1,6 @@
 // @flow
 import React from 'react';
-import { DateTime } from 'luxon';
+import Data from '../static/awesomefest_2018.json';
+import App from '../components/App'
 
-type IndexType = {
-
-};
-
-export default ({}: IndexType) => <h1>hi</h1>;
+export default () => <App store={Data} />;
