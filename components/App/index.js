@@ -10,28 +10,29 @@ export default class extends React.Component {
   constructor(props) {
     super(props);
 
-    const DEBUG_TIME = DateTime.fromISO("2018-02-16T19:25:00.000-08:00") || DateTime.fromObject({zone: props.store.timezone});
-
-    const { activeBlock } = this.initializeStateFromStore(props.store.dates, DEBUG_TIME);
+    const DEBUG_TIME = DateTime.fromISO("2018-02-18T15:15:00.000-08:00") || DateTime.fromObject({zone: props.store.timezone});
+    const { activeBlock, activeBlockId } = this.initializeStateFromStore(props.store.dates, DEBUG_TIME);
 
     this.state = {
       data: props.store,
       timeNow: DEBUG_TIME,
       activeBlock,
+      activeBlockId,
       selectedVenue: null,
     };
   }
 
-  initializeStateFromStore(dates, DEBUG_TIME) {
+  initializeStateFromStore( dates, DEBUG_TIME ) {
+    let activeBlockId = null;
     // filter store down to one `Date{ blocks[ [] ], venues[ {} ] }`
-    const activeBlock = dates.filter(({ blocks }) =>
-      blocks.some(([ start, end ]) => {
-        return DEBUG_TIME >= DateTime.fromISO(start)
-          && DateTime.fromISO(end) >= DEBUG_TIME
-      })
-    );
+    const activeBlock = dates.filter(({ blocks }) => blocks.some(([ start, end ], index) => {
+      if (DEBUG_TIME >= DateTime.fromISO(start) && DEBUG_TIME < DateTime.fromISO(end)) {
+        activeBlockId = index;
+        return true;
+      }
+    }));
 
-    return { activeBlock };
+    return { activeBlock, activeBlockId };
   }
 
   handleVenueSelection(venue) {
@@ -48,6 +49,7 @@ export default class extends React.Component {
           next();
         }}
         venueOptions={this.state.activeBlock}
+        activeBlockId={this.state.activeBlockId}
       />
     );
 
