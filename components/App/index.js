@@ -19,7 +19,6 @@ export default class extends React.Component {
       timeNow: DEBUG_TIME,
       activeBlock,
       selectedVenue: null,
-
     };
   }
 
