@@ -1,0 +1,99 @@
+{
+  dates: [
+    {
+      value: [2018, 1, 16],
+      venues: [
+        {
+          name: "Venue One",
+          loc: "1234 Aloha Drive",
+          acts: [
+            ["Act Name Here1", "Time Here1"],
+            ["Act Name Here2", "Time Here2"],
+          ]
+        },
+        {
+          name: "Venue Two",
+          loc: "4567 Shaka Way",
+          acts: [
+            ["Act Name Here1", "Time Here1"],
+            ["Act Name Here2", "Time Here2"],
+          ]
+        }
+      ]
+    },
+    {
+      value: [2018, 1, 17],
+      venues: [
+        {
+          name: "Venue One",
+          loc: "1234 Aloha Drive",
+          acts: [
+            ["Act Name Here1", "Time Here1"],
+            ["Act Name Here2", "Time Here2"],
+          ]
+        },
+        {
+          name: "Venue Two",
+          loc: "4567 Shaka Way",
+          acts: [
+            ["Act Name Here1", "Time Here1"],
+            ["Act Name Here2", "Time Here2"],
+          ]
+        },
+        {
+          name: "Venue Three",
+          loc: "1234 Aloha Drive",
+          acts: [
+            ["Act Name Here1", "Time Here1"],
+            ["Act Name Here2", "Time Here2"],
+          ]
+        },
+        {
+          name: "Venue Four",
+          loc: "4567 Shaka Way",
+          acts: [
+            ["Act Name Here1", "Time Here1"],
+            ["Act Name Here2", "Time Here2"],
+          ]
+        }
+      ]
+    },
+    {
+      value: [2018, 1, 18],
+      venues: [
+        {
+          name: "Venue One",
+          loc: "1234 Aloha Drive",
+          acts: [
+            ["Act Name Here1", "Time Here1"],
+            ["Act Name Here2", "Time Here2"],
+          ]
+        },
+        {
+          name: "Venue Two",
+          loc: "4567 Shaka Way",
+          acts: [
+            ["Act Name Here1", "Time Here1"],
+            ["Act Name Here2", "Time Here2"],
+          ]
+        },
+        {
+          name: "Venue Three",
+          loc: "1234 Aloha Drive",
+          acts: [
+            ["Act Name Here1", "Time Here1"],
+            ["Act Name Here2", "Time Here2"],
+          ]
+        },
+        {
+          name: "Venue Four",
+          loc: "4567 Shaka Way",
+          acts: [
+            ["Act Name Here1", "Time Here1"],
+            ["Act Name Here2", "Time Here2"],
+          ]
+        }
+      ]
+    }
+  ]
+}

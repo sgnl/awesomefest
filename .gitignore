@@ -16,3 +16,7 @@ yarn.json
 
 # dummies
 .DS_Store
+
+# data files
+data
+!data/schedule.json.example

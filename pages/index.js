@@ -1,1 +1,8 @@
-export default () => <h1>hi</h1>
+// @flow
+import React from 'react'
+
+type IndexType = {
+
+}
+
+export default ({}: IndexType) => <h1>hi</h1>
