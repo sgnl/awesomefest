@@ -1262,10 +1262,6 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-date-fns@^1.29.0:
-  version "1.29.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.29.0.tgz#12e609cdcb935127311d04d33334e2960a2a54e6"
-
 date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
@@ -1763,6 +1759,10 @@ fstream@^1.0.0, fstream@^1.0.10, fstream@^1.0.2:
     inherits "~2.0.0"
     mkdirp ">=0.5 0"
     rimraf "2"
+
+full-icu@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/full-icu/-/full-icu-1.2.0.tgz#6bd8bf565f696aab30df503de2d47b92d9f1046f"
 
 function-bind@^1.0.2, function-bind@^1.1.1:
   version "1.1.1"
@@ -2363,6 +2363,12 @@ lru-cache@^4.0.1, lru-cache@^4.1.1:
   dependencies:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
+
+luxon@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-0.4.0.tgz#e7146ce52a6db7e82448438827860092d75bb8d6"
+  dependencies:
+    full-icu "^1.2.0"
 
 make-dir@^1.0.0:
   version "1.1.0"
