@@ -38,8 +38,9 @@ export default ({ acts, previous, timeNow, venueName }) => {
 };
 
 const getCurrentActIndex = (acts, timeNow) => {
-  const nowNextMissedList = [null, null, null]; // if null is returned, then we must be in-between acts! TODO
+  const nowNextMissedList = [null, null, null];
 
+  // main function to find which act is playing now, next, and who was just missed
   for (var i = 0; i < acts.length; i++) {
     const [ actName, startAndEndString ] = acts[i];
     let [ startTime, endTime ] = startAndEndString.split(' | ');
@@ -62,7 +63,7 @@ const getCurrentActIndex = (acts, timeNow) => {
     }
   }
 
-  // handle case where no one is playing currently but the block is active e.g. transition state; next band is setting up
+  // edge case where there is no performer playing and waiting for someone to start playing
   for (var i = 0; i < acts.length; i++) {
     const [ actName, startAndEndString ] = acts[i];
     let [ startTime, endTime ] = startAndEndString.split(' | ');
@@ -82,6 +83,7 @@ const getCurrentActIndex = (acts, timeNow) => {
       return nowNextMissedList;
     }
   }
-  //
+
+  // this return should never execute but here because reasons.
   return nowNextMissedList;
 };

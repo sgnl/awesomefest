@@ -32,8 +32,11 @@ export default class extends React.Component {
         activeBlockId = index;
         return true;
       }
-    }));
+    }))[0];
 
+    // filter out irrelevant venues
+    activeBlock.venues = activeBlock.venues.filter(({ block_id }) => block_id === activeBlockId);
+    console.log(activeBlock)
     return { activeBlock, activeBlockId };
   }
 
@@ -49,8 +52,7 @@ export default class extends React.Component {
           this.handleVenueSelection(venue_name);
           next();
         }}
-        venueOptions={this.state.activeBlock}
-        activeBlockId={this.state.activeBlockId}
+        venues={this.state.activeBlock.venues}
         jumpToStep={() => push('see_all')}
       />
     );
@@ -65,10 +67,12 @@ export default class extends React.Component {
       />
     );
 
+    console.log('this.state.activeBlock: ', this.state.activeBlock);
+    console.log('this.state.activeBlockId: ', this.state.activeBlockId);
+
     // show an <ActsList /> for each venue within a block TODO
     const Step3 = ({ previous }) => (
       <div>
-        hi
       </div>
     );
 
