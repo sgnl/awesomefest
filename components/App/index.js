@@ -36,7 +36,6 @@ export default class extends React.Component {
 
     // filter out irrelevant venues
     activeBlock.venues = activeBlock.venues.filter(({ block_id }) => block_id === activeBlockId);
-    console.log(activeBlock)
     return { activeBlock, activeBlockId };
   }
 
@@ -67,12 +66,10 @@ export default class extends React.Component {
       />
     );
 
-    console.log('this.state.activeBlock: ', this.state.activeBlock);
-    console.log('this.state.activeBlockId: ', this.state.activeBlockId);
-
     // show an <ActsList /> for each venue within a block TODO
     const Step3 = ({ previous }) => (
       <div>
+
       </div>
     );
 
