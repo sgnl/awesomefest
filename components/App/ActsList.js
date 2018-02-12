@@ -62,7 +62,7 @@ const getCurrentActIndex = (acts, timeNow) => {
     }
   }
 
-  // handle case where no one is playing currently e.g. next band is setting up
+  // handle case where no one is playing currently but the block is active e.g. transition state; next band is setting up
   for (var i = 0; i < acts.length; i++) {
     const [ actName, startAndEndString ] = acts[i];
     let [ startTime, endTime ] = startAndEndString.split(' | ');
