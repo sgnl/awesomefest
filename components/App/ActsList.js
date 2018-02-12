@@ -32,7 +32,7 @@ export default ({ acts, previous, timeNow, venueName }) => {
           headerText="just missed"
         />
       }
-      <button onClick={previous}>Change Venue</button>
+      { previous && <button onClick={previous}>Change Venue</button>}
     </div>
   );
 };

@@ -1,5 +1,7 @@
 // @flow
 
+// @flow
+
 import React from 'react';
 
 export default ({ actName, headerText }) =>
