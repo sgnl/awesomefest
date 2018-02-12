@@ -1,0 +1,19 @@
+html {
+  min-height: 100vh;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+body {
+  padding: 20px 0 40px;
+  min-height: 100vh;
+  font-size: 18px;
+  text-align: center;
+  color: #333;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: linear-gradient(to bottom, #c0dcf2 6%, #3bd773);;
+}
+
+.acts-list + .acts-list {
+  border-top: 5px solid #333;
+}

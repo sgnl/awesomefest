@@ -2,6 +2,7 @@
 import React from 'react';
 import { DateTime } from 'luxon';
 import Act from './Act';
+import { Button, ActListHeader, ActListHeaderTitle, ActListHeaderName } from './Styles';
 
 export default ({ acts, previous, timeNow, venueName }) => {
   // reduce acts down to the currently active act's index value in list
@@ -9,30 +10,30 @@ export default ({ acts, previous, timeNow, venueName }) => {
   const [ now, next, missed ] = getCurrentActIndex(acts, DateTime.fromISO(timeNow));
 
   return (
-    <div>
-      <header>
-        <span>Venue</span>
-        <h1>{venueName}</h1>
-      </header>
+    <div className="acts-list">
+      <ActListHeader>
+        <ActListHeaderTitle>Venue:</ActListHeaderTitle>
+        { venueName }
+      </ActListHeader>
       {
         now && <Act
           actName={ now }
-          headerText="playing now"
+          headerText="now:"
         />
       }
       {
         next && <Act
           actName={ next }
-          headerText="playing next in XXX mins …"
+          headerText="next in XXX mins:"
         />
       }
       {
         missed && <Act
           actName={ missed }
-          headerText="just missed"
+          headerText="missed:"
         />
       }
-      { previous && <button onClick={previous}>Change Venue</button>}
+      { previous && <Button onClick={previous}>Change Venue</Button>}
     </div>
   );
 };

@@ -6,18 +6,26 @@ import { DateTime } from 'luxon';
 import Head from 'next/head';
 import VenueSelect from './VenueSelect';
 import ActsList from './ActsList';
+import NoFest from './NoFest';
+
+import { Wrapper, PageTitle, Button } from './Styles';
 
 export default class extends React.Component {
   constructor(props) {
     super(props);
 
     // 2/17 5:35 PM
+    // const DEBUG_TIME = false;
     const DEBUG_TIME = DateTime.fromISO("2018-02-16T20:05:00.000-08:00");
     const { activeBlock, activeBlockId } = this.initializeStateFromStore(props.store.dates, DEBUG_TIME);
 
+    if (!activeBlock && !activeBlockId) {
+
+    }
+
     this.state = {
       data: props.store,
-      timeNow: DEBUG_TIME,
+      timeNow: DEBUG_TIME || DateTime.local().setZone('America/Los_Angeles'),
       activeBlock,
       activeBlockId,
       selectedVenue: null,
@@ -35,9 +43,25 @@ export default class extends React.Component {
       }
     }))[0];
 
+    if (activeBlock === void 0) {
+      return { activeBlock: null, activeBlockId: null }
+    }
+
     // filter out irrelevant venues
     activeBlock.venues = activeBlock.venues.filter(({ block_id }) => block_id === activeBlockId);
     return { activeBlock, activeBlockId };
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      // const DEBUG_TIME = DateTime.local().setZone('America/Los_Angeles');
+      const DEBUG_TIME = DateTime.fromISO("2018-02-16T20:05:00.000-08:00");
+      const { activeBlock, activeBlockId } = this.initializeStateFromStore(this.state.data.dates, DEBUG_TIME);
+      this.setState(() => ({
+        activeBlock,
+        activeBlockId
+      }));
+    }, 2500);
   }
 
   handleVenueSelection(venue) {
@@ -45,6 +69,21 @@ export default class extends React.Component {
   }
 
   render() {
+    if (this.state.activeBlock === null && this.state.activeBlockId === null) {
+      let message = '';
+      let timeNow = this.state.timeNow;
+      const festivalStart = DateTime.fromISO('2018-02-16T19:25:00.000-08:00');
+      const festivalEnd = DateTime.fromISO('2018-02-19T02:00:00.000-08:00');
+
+      if (timeNow < festivalStart) {
+        message = 'Waiting for festival to start …';
+      } else if (timeNow > festivalEnd) {
+        message = '⚰️';
+      }
+
+      return <NoFest message={message}/>;
+    }
+
     /* STEP 1: SELECT A VENUE, PUNK! */
     const Step1 = ({ next, push }) => (
       <VenueSelect
@@ -79,18 +118,13 @@ export default class extends React.Component {
             />
           ))
         }
-        <button onClick={() => push('venue_select')}>&lt; BACK</button>
+        <Button onClick={() => push('venue_select')}>&lt; BACK</Button>
       </div>
     );
 
     return (
-      <div>
-        <Head>
-          <title>Awesomefest 11 Quick Schedule</title>
-          <meta charSet='utf-8' />
-          <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-          <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet" />
-        </Head>
+      <Wrapper>
+        <PageTitle>awesomefest 11</PageTitle>
         <Wizard>
           <Steps>
             <Step
@@ -107,7 +141,8 @@ export default class extends React.Component {
             />
           </Steps>
         </Wizard>
-      </div>
+        <p>🤙 coded by <a href="mailto:rayrfarias+awesomefest11@gmail.com?subject=SAY THANKS FOR USING MY APP, SEND ME FEEDBACK OR HELP SPREAD THE WORD! I WANT MORE PEOPLE TO USE THIS :>">ray</a></p>
+      </Wrapper>
     );
   }
 };

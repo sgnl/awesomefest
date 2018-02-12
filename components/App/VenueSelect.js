@@ -1,20 +1,19 @@
 // @flow
 import React from 'react';
+import { Wrapper, Button } from './Styles';
 
 export default ({ onVenueSelect, venues, jumpToStep }) =>
-<div>
-  <h1>WHERE ARE YOU</h1>
-  <ul>
-    {
-      venues.map(({ name, block_id }, index) =>
-        <li
-          onClick={() => onVenueSelect( venues[index] )}
-          key={index}
-        >
-          { name }
-        </li>
-      )
-    }
-  </ul>
-  <button onClick={jumpToStep}>See Both Venues</button>
-</div>
+<Wrapper>
+  <h1>CHOOSE ONE</h1>
+  {
+    venues.map(({ name, block_id }, index) =>
+      <Button
+        onClick={() => onVenueSelect( venues[index] )}
+        key={index}
+      >
+        { name }
+      </Button>
+    )
+  }
+  { venues.length > 1 && <Button onClick={jumpToStep}>SEE { venues.length === 2 ? "both" : "ALL" } VENUES</Button> }
+</Wrapper>
