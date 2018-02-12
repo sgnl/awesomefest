@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 
-export default ({ onVenueSelect, venueOptions, activeBlockId }) =>
+export default ({ onVenueSelect, venueOptions, activeBlockId, jumpToStep }) =>
 <div>
   <h1>WHERE ARE YOU</h1>
   <ul>
@@ -20,4 +20,5 @@ export default ({ onVenueSelect, venueOptions, activeBlockId }) =>
       }))
     }
   </ul>
+  <button onClick={jumpToStep}>See Both Venues</button>
 </div>

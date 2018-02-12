@@ -43,7 +43,7 @@ export default class extends React.Component {
 
   render() {
     /* STEP 1: SELECT A VENUE, PUNK! */
-    const Step1 = ({ next }) => (
+    const Step1 = ({ next, push }) => (
       <VenueSelect
         onVenueSelect={(venue_name) => {
           this.handleVenueSelection(venue_name);
@@ -51,6 +51,7 @@ export default class extends React.Component {
         }}
         venueOptions={this.state.activeBlock}
         activeBlockId={this.state.activeBlockId}
+        jumpToStep={() => push('see_all')}
       />
     );
 
@@ -64,6 +65,13 @@ export default class extends React.Component {
       />
     );
 
+    // show an <ActsList /> for each venue within a block TODO
+    const Step3 = ({ previous }) => (
+      <div>
+        hi
+      </div>
+    );
+
     return (
       <div>
         <Wizard>
@@ -75,6 +83,10 @@ export default class extends React.Component {
             <Step
               id="acts_display"
               render={Step2}
+            />
+            <Step
+              id="see_all"
+              render={Step3}
             />
           </Steps>
         </Wizard>
