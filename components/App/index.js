@@ -10,7 +10,8 @@ export default class extends React.Component {
   constructor(props) {
     super(props);
 
-    const DEBUG_TIME = DateTime.fromISO("2018-02-18T15:15:00.000-08:00") || DateTime.fromObject({zone: props.store.timezone});
+    // 2/17 5:35 PM
+    const DEBUG_TIME = DateTime.fromISO("2018-02-17T17:05:00.000-08:00");
     const { activeBlock, activeBlockId } = this.initializeStateFromStore(props.store.dates, DEBUG_TIME);
 
     this.state = {
@@ -24,6 +25,7 @@ export default class extends React.Component {
 
   initializeStateFromStore( dates, DEBUG_TIME ) {
     let activeBlockId = null;
+
     // filter store down to one `Date{ blocks[ [] ], venues[ {} ] }`
     const activeBlock = dates.filter(({ blocks }) => blocks.some(([ start, end ], index) => {
       if (DEBUG_TIME >= DateTime.fromISO(start) && DEBUG_TIME < DateTime.fromISO(end)) {
@@ -44,7 +46,6 @@ export default class extends React.Component {
     const Step1 = ({ next }) => (
       <VenueSelect
         onVenueSelect={(venue_name) => {
-          console.log('venue_name: ', venue_name);
           this.handleVenueSelection(venue_name);
           next();
         }}
@@ -59,12 +60,12 @@ export default class extends React.Component {
         timeNow={this.state.timeNow}
         acts={this.state.selectedVenue.acts}
         previous={previous}
+        venueName={this.state.selectedVenue.name}
       />
     );
 
     return (
       <div>
-        <h1>header</h1>
         <Wizard>
           <Steps>
             <Step

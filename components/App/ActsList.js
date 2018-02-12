@@ -1,41 +1,87 @@
 // @flow
 import React from 'react';
 import { DateTime } from 'luxon';
+import Act from './Act';
 
-export default ({ acts, previous, timeNow }) => {
-  let now = null;
-  let next = null;
-  let missed = null;
-
+export default ({ acts, previous, timeNow, venueName }) => {
   // reduce acts down to the currently active act's index value in list
     // then get the next and missed based on the returned index value
-  const nowIndex = getCurrentActIndex(acts, timeNow);
-
-  now = acts[nowIndex];
-  next = acts[nowIndex + 1];
+  const [ now, next, missed ] = getCurrentActIndex(acts, DateTime.fromISO(timeNow));
 
   return (
     <div>
-      <p>Playing Now: { now[0] }</p>
-      { next && <p>playing next: {next[0]}</p> }
-      { missed && <p>just missed: {missed[0]}</p> }
-      <button onClick={previous}>previous</button>
+      <header>
+        <span>Venue</span>
+        <h1>{venueName}</h1>
+      </header>
+      {
+        now && <Act
+          actName={ now }
+          headerText="playing now"
+        />
+      }
+      {
+        next && <Act
+          actName={ next }
+          headerText="playing next in XXX mins …"
+        />
+      }
+      {
+        missed && <Act
+          actName={ missed }
+          headerText="just missed"
+        />
+      }
+      <button onClick={previous}>Change Venue</button>
     </div>
   );
 };
 
-const getCurrentActIndex = (acts, timeNow) => acts.reduce(( acc, act, index ) => {
-  const [ _, setTimes ] = act;
-  let [ startTime, endTime ] = setTimes.split(' | ');
+const getCurrentActIndex = (acts, timeNow) => {
+  const nowNextMissedList = [null, null, null]; // if null is returned, then we must be in-between acts! TODO
 
-  startTime = DateTime.fromFormat(startTime, "h:mm a");
-  endTime = DateTime.fromFormat(endTime, "h:mm a");
+  for (var i = 0; i < acts.length; i++) {
+    const [ actName, startAndEndString ] = acts[i];
+    let [ startTime, endTime ] = startAndEndString.split(' | ');
 
-  let nextAcc = acc;
+    startTime = DateTime.fromISO(startTime);
+    endTime = DateTime.fromISO(endTime);
 
-  if (timeNow >= startTime && endTime >= timeNow ) {
-    nextAcc = index;
+    if (timeNow >= startTime && timeNow <= endTime) {
+      nowNextMissedList[0] = actName; // now
+
+      try {
+        nowNextMissedList[1] = acts[i + 1][0]; // next
+      } catch(e) {}
+
+      try {
+        nowNextMissedList[2] = acts[i - 1][0]; // missed
+      } catch(e) {}
+
+      return nowNextMissedList;
+    }
   }
 
-  return nextAcc;
-}, 0);
+  // handle case where no one is playing currently e.g. next band is setting up
+  for (var i = 0; i < acts.length; i++) {
+    const [ actName, startAndEndString ] = acts[i];
+    let [ startTime, endTime ] = startAndEndString.split(' | ');
+
+    startTime = DateTime.fromISO(startTime);
+    endTime = DateTime.fromISO(endTime);
+
+    if (timeNow < startTime) {
+      try {
+        nowNextMissedList[1] = acts[i + 1][0]; // next
+      } catch(e) {}
+
+      try {
+        nowNextMissedList[2] = acts[i - 1][0]; // missed
+      } catch(e) {}
+
+      return nowNextMissedList;
+    }
+  }
+  //
+  return nowNextMissedList;
+};
