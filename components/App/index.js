@@ -69,7 +69,16 @@ export default class extends React.Component {
     // show an <ActsList /> for each venue within a block TODO
     const Step3 = ({ previous }) => (
       <div>
-
+        {
+          this.state.activeBlock.venues.map(({ name, acts }, index) => (
+            <ActsList
+              timeNow={this.state.timeNow}
+              acts={acts}
+              previous={previous}
+              venueName={name}
+            />
+          ))
+        }
       </div>
     );
 
