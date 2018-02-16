@@ -26,6 +26,7 @@ export default class extends React.Component {
     this.state = {
       data: props.store,
       timeNow: TIME_NOW,
+      // timeString: TIME_NOW.toISO(),
       activeBlock,
       activeBlockId,
       selectedVenue: null,
@@ -55,11 +56,16 @@ export default class extends React.Component {
 
   componentDidMount() {
     setInterval(() => {
-      const { activeBlock, activeBlockId } = this.initializeStateFromStore(this.state.data.dates, this.state.timeNow)
-      this.setState(() => ({
-        activeBlock,
-        activeBlockId,
-      }))
+      const newState = { ...this.state }
+      const newTime = DateTime.local().setZone('America/Los_Angeles').plus({ days: 1, hours: 2, minutes: 25 });
+      const { activeBlock, activeBlockId } = this.initializeStateFromStore(this.state.data.dates, newTime)
+
+      newState.activeBlock = activeBlock;
+      newState.activeBlockId = activeBlockId;
+      newState.timeNow = newTime;
+      // newState.timeString = newTime.toISO();
+
+      this.setState(() => newState)
     }, 2500)
   }
 
@@ -117,7 +123,7 @@ export default class extends React.Component {
             />
           ))
         }
-        <Button onClick={() => push('venue_select')}>&lt BACK</Button>
+        <Button onClick={() => push('venue_select')}>&lt; BACK</Button>
       </div>
     )
 

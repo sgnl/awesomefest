@@ -42,7 +42,7 @@ const getCurrentActIndex = (acts, timeNow) => {
   const nowNextMissedList = [null, null, null]
 
   // main function to find which act is playing now, next, and who was just missed
-  for (var i = 0 i < acts.length i++) {
+  for (var i = 0; i < acts.length; i++) {
     const [ actName, startAndEndString ] = acts[i]
     let [ startTime, endTime ] = startAndEndString.split(' | ')
 
@@ -65,8 +65,8 @@ const getCurrentActIndex = (acts, timeNow) => {
   }
 
   // edge case where there is no performer playing and waiting for someone to start playing
-  for (var i = 0 i < acts.length i++) {
-    const [ actName, startAndEndString ] = acts[i]
+  for (var j = 0; j < acts.length; j++) {
+    const [ actName, startAndEndString ] = acts[j]
     let [ startTime, endTime ] = startAndEndString.split(' | ')
 
     startTime = DateTime.fromISO(startTime)
@@ -74,11 +74,11 @@ const getCurrentActIndex = (acts, timeNow) => {
 
     if (timeNow < startTime) {
       try {
-        nowNextMissedList[1] = acts[i + 1][0] // next
+        nowNextMissedList[1] = acts[j + 1][0] // next
       } catch(e) {}
 
       try {
-        nowNextMissedList[2] = acts[i - 1][0] // missed
+        nowNextMissedList[2] = acts[j][0] // missed
       } catch(e) {}
 
       return nowNextMissedList
