@@ -23,7 +23,6 @@ export const Button = glamorous.button({
   margin: '1rem 0',
   padding: '1rem',
   textTransform: 'uppercase',
-  textDecoration: 'underline'
 });
 
 export const ActListHeader = glamorous.h1({
