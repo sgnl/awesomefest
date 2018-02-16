@@ -57,7 +57,7 @@ export default class extends React.Component {
   componentDidMount() {
     setInterval(() => {
       const newState = { ...this.state }
-      const newTime = DateTime.local().setZone('America/Los_Angeles').plus({ days: 2, hours: 3 });
+      const newTime = DateTime.local().setZone('America/Los_Angeles').plus({ days: 1, hours: 3 });
       const { activeBlock, activeBlockId } = this.initializeStateFromStore(this.state.data.dates, newTime)
 
       newState.activeBlock = activeBlock;
