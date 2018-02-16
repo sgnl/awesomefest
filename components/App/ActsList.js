@@ -7,8 +7,10 @@ import { Button, ActListHeader, ActListHeaderTitle, ActListHeaderName } from './
 export default ({ acts, previous, timeNow, venueName }) => {
   // reduce acts down to the currently active act's index value in list
     // then get the next and missed based on the returned index value
-  const [ now, next, missed ] = getCurrentActIndex(acts, DateTime.fromISO(timeNow))
+  const [ now, nextInfo, missed ] = getCurrentActIndex(acts, DateTime.fromISO(timeNow))
+  const { next, startTime } = nextInfo;
 
+  let nextStartTimeDiff = Math.round(startTime.diff(timeNow, 'minutes').minutes)
   return (
     <div className="acts-list">
       <ActListHeader>
@@ -24,7 +26,7 @@ export default ({ acts, previous, timeNow, venueName }) => {
       {
         next && <Act
           actName={ next }
-          headerText="next in XXX mins:"
+          headerText={`next in ${nextStartTimeDiff} ${nextStartTimeDiff > 1 ? 'minutes' : 'minute'}:`}
         />
       }
       {
@@ -39,7 +41,7 @@ export default ({ acts, previous, timeNow, venueName }) => {
 }
 
 const getCurrentActIndex = (acts, timeNow) => {
-  const nowNextMissedList = [null, null, null]
+  const nowNextMissedList = [null, {}, null]
 
   // main function to find which act is playing now, next, and who was just missed
   for (var i = 0; i < acts.length; i++) {
@@ -50,15 +52,29 @@ const getCurrentActIndex = (acts, timeNow) => {
     endTime = DateTime.fromISO(endTime)
 
     if (timeNow >= startTime && timeNow <= endTime) {
-      nowNextMissedList[0] = actName // now
+      nowNextMissedList[0] = actName         // now
 
       try {
-        nowNextMissedList[1] = acts[i + 1][0] // next
-      } catch(e) {}
+        acts[i + 1][0]
+      } catch(e) {
+        acts[i + 1] = [null]
+      }
 
       try {
-        nowNextMissedList[2] = acts[i - 1][0] // missed
-      } catch(e) {}
+        const nextActName = acts[i + 1][0]    // next
+        nowNextMissedList[1] = {
+          next: nextActName,
+          startTime,
+        }
+      } catch(e) {
+        console.log('🤭', e);
+      }
+
+      try {
+        nowNextMissedList[2] = acts[i - 1][0]   // missed
+      } catch(e) {
+        console.log('🤭', e);
+      }
 
       return nowNextMissedList
     }
@@ -74,13 +90,24 @@ const getCurrentActIndex = (acts, timeNow) => {
 
     if (timeNow < startTime) {
       try {
-        nowNextMissedList[1] = acts[j + 1][0] // next
-      } catch(e) {}
+        nowNextMissedList[1] = { // next
+          next: actName,
+          startTime,
+        }
+      } catch(e) {
+        console.log('🤭', e);
+        nowNextMissedList[1] = {
+          next: null,
+          startTime,
+        }
+      }
 
       try {
-        nowNextMissedList[2] = acts[j][0] // missed
-      } catch(e) {}
-
+        nowNextMissedList[2] = acts[j - 1][0] // missed
+      } catch(e) {
+        console.log('🤭', e);
+      }
+      console.log('heere', nowNextMissedList)
       return nowNextMissedList
     }
   }
