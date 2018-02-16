@@ -10,7 +10,7 @@ export default ({ acts, previous, timeNow, venueName }) => {
   const [ now, nextInfo, missed ] = getCurrentActIndex(acts, DateTime.fromISO(timeNow))
   const { next, startTime } = nextInfo;
 
-  let nextStartTimeDiff = Math.round(timeNow.diff(startTime, 'minutes').minutes)
+  let nextStartTimeDiff = Math.round(startTime.diff(timeNow, 'minutes').minutes)
   return (
     <div className="acts-list">
       <ActListHeader>
@@ -52,7 +52,7 @@ const getCurrentActIndex = (acts, timeNow) => {
     endTime = DateTime.fromISO(endTime)
 
     if (timeNow >= startTime && timeNow <= endTime) {
-      nowNextMissedList[0] = actName         // now
+      nowNextMissedList[0] = actName                        // now
 
       try {
         acts[i + 1][0]
@@ -61,17 +61,18 @@ const getCurrentActIndex = (acts, timeNow) => {
       }
 
       try {
-        const nextActName = acts[i + 1][0]    // next
+        let [ nextActName, nextStartAndEndTime ] = acts[i + 1]    // next
+        let [ nextStartTime, _ ] = nextStartAndEndTime.split(' | ')
         nowNextMissedList[1] = {
           next: nextActName,
-          startTime,
+          startTime: DateTime.fromISO(nextStartTime),
         }
       } catch(e) {
         console.log('🤭', e);
       }
 
       try {
-        nowNextMissedList[2] = acts[i - 1][0]   // missed
+        nowNextMissedList[2] = acts[i - 1][0]               // missed
       } catch(e) {
         console.log('🤭', e);
       }
@@ -90,7 +91,7 @@ const getCurrentActIndex = (acts, timeNow) => {
 
     if (timeNow < startTime) {
       try {
-        nowNextMissedList[1] = { // next
+        nowNextMissedList[1] = {                  // next
           next: actName,
           startTime,
         }
@@ -103,7 +104,7 @@ const getCurrentActIndex = (acts, timeNow) => {
       }
 
       try {
-        nowNextMissedList[2] = acts[j - 1][0] // missed
+        nowNextMissedList[2] = acts[j - 1][0]     // missed
       } catch(e) {
         console.log('🤭', e);
       }
