@@ -10,7 +10,7 @@ export default ({ acts, previous, timeNow, venueName }) => {
   const [ now, nextInfo, missed ] = getCurrentActIndex(acts, DateTime.fromISO(timeNow))
   const { next, startTime } = nextInfo;
 
-  let nextStartTimeDiff = Math.round(startTime.diff(timeNow, 'minutes').minutes)
+  let nextStartTimeDiff = Math.round(timeNow.diff(startTime, 'minutes').minutes)
   return (
     <div className="acts-list">
       <ActListHeader>
