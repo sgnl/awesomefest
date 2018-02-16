@@ -1,6 +1,6 @@
 // @flow
-import React from 'react';
-import { ActListHeader, ActListHeaderTitle, ActListHeaderName } from './Styles';
+import React from 'react'
+import { ActListHeader, ActListHeaderTitle, ActListHeaderName } from './Styles'
 
 export default ({ actName, headerText }) =>
 <ActListHeader>

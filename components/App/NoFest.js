@@ -1,6 +1,6 @@
 // @flow
-import React from 'react';
-import { Wrapper, PageTitle } from './Styles';
+import React from 'react'
+import { Wrapper, PageTitle } from './Styles'
 
 export default ({ message }) =>
 <Wrapper>

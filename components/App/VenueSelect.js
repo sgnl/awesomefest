@@ -1,6 +1,6 @@
 // @flow
-import React from 'react';
-import { Wrapper, Button } from './Styles';
+import React from 'react'
+import { Wrapper, Button } from './Styles'
 
 export default ({ onVenueSelect, venues, jumpToStep }) =>
 <Wrapper>
