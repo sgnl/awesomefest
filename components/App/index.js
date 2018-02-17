@@ -60,10 +60,9 @@ export default class extends React.Component {
       const newTime = DateTime.local().setZone('America/Los_Angeles');
       const { activeBlock, activeBlockId } = this.initializeStateFromStore(this.state.data.dates, newTime)
 
-      newState.activeBlock = activeBlock;
-      newState.activeBlockId = activeBlockId;
-      newState.timeNow = newTime;
-      // newState.timeString = newTime.toISO();
+      newState.activeBlock = activeBlock
+      newState.activeBlockId = activeBlockId
+      newState.timeNow = newTime
 
       this.setState(() => newState)
     }, 2500)
