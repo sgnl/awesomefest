@@ -30,6 +30,9 @@ export default class MyDocument extends Document {
           <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet" />
           <link href="/static/global.css" rel="stylesheet" />
           <style dangerouslySetInnerHTML={{__html: this.props.css}} />
+          {/* Global site tag (gtag.js) - Google Analytics */}
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54299416-1"></script>
+          <script src="/static/gtag.js" />
         </Head>
         <body>
           <Main />
